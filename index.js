@@ -31,8 +31,5 @@ findAvailablePort(findPort).then((port) => {
   app.listen(port, () => {
     console.log(`App is listening on port http://localhost:${port}`)
   })
-  app.get('/getPort', (req, res) => {
-    res.send({ port: port })
-  })
 })
 
