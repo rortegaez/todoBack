@@ -1,36 +1,37 @@
-const Task = require ('../models/task')
+const Tareas = require ('../models/tareas')
 
 const getAll = async (req, res) => {
-	const result = await Task.find()
+	const result = await Tareas.find()
 	res.json(result)
 }
 
 const create = async (req, res) => {
-	const newTask = new Task(req.body)
-	newTask.save((err, saveInfo) => {
+	const newTareas = new Tareas(req.body)
+	newTareas.save((err, saveInfo) => {
 		if(err){
 			console.log('Ha ocurrido un error', err)
 			return res.status(500).json({ error: err })
 		}
-		return res.json({ Task: saveInfo })
+		return res.json({ Tareas
+			: saveInfo })
 	})
 }
 
 const deleteById = async (req, res) => {
-	const TaskToDelete = await Task.findByIdAndDelete(req.params.id)
-	if(!TaskToDelete){
+	const TareasToDelete = await Tareas.findByIdAndDelete(req.params.id)
+	if(!TareasToDelete){
 		return res.json({ message: 'nothing to delete' })
 	}
 	return res.json({ message: 'ok' })
 }
 
 const getById = async (req, res) => {
-	const result = await Task.findById(req.params.id)
+	const result = await Tareas.findById(req.params.id)
 	res.json(result)
 }
 
 const updateById = async (req, res) => {
-	const result = await Task.findByIdAndUpdate(req.params.id, req.body)
+	const result = await Tareas.findByIdAndUpdate(req.params.id, req.body)
 	if(!result){
 		return res.json({ message: 'nothing to modifier' })
 	}

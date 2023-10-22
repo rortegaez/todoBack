@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-const taskRoutes = require('./task')
+const tareasRoutes = require('./tareas')
 
 router
-	.use('/task', taskRoutes)
+	.use('/tareas', tareasRoutes)
 
 module.exports = router
